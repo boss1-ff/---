@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Нурбийке Уланбек кызы — Мугалимдер күнү</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at top, #263b72 0%, #10182e 45%, #070b18 100%);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===== ЗВЁЗДЫ ===== */
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: .7;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%,100% { opacity: .2; transform: scale(.7); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* ===== ОБЩЕЕ ===== */
+
+section {
+    position: relative;
+    z-index: 2;
+    max-width: 1050px;
+    margin: auto;
+    padding: 90px 20px;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* ===== HERO ===== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.hero-content {
+    max-width: 900px;
+    animation: appear 1.2s ease;
+}
+
+.small-title {
+    color: #ffd6e7;
+    letter-spacing: 3px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 7vw, 75px);
+    background: linear-gradient(90deg, #fff, #ffd3e5, #fff);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    color: #dce5ff;
+    font-size: 20px;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: auto;
+}
+
+.teacher-photo {
+    width: 190px;
+    height: 190px;
+    margin: 30px auto;
+    border-radius: 50%;
+    padding: 5px;
+    background: linear-gradient(135deg, #ffd2e4, #8ba8ff);
+    box-shadow: 0 0 50px rgba(255, 170, 210, .25);
+}
+
+.teacher-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #1b2545;
+}
+
+/* ===== BUTTON ===== */
+
+.surprise-btn {
+    margin-top: 30px;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff8fbc, #b78cff);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(190, 100, 180, .25);
+    transition: .3s;
+}
+
+.surprise-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(220, 120, 190, .4);
+}
+
+/* ===== INTRO ===== */
+
+.hidden-content {
+    display: none;
+}
+
+.reveal {
+    animation: reveal .9s ease forwards;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    text-align: center;
+    color: #bdc8e9;
+    max-width: 650px;
+    margin: 0 auto 45px;
+    line-height: 1.7;
+}
+
+/* ===== CARDS ===== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 24px;
+    padding: 30px 22px;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,.1);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #ffd2e4;
+}
+
+.card p {
+    color: #cbd4ed;
+    line-height: 1.6;
+}
+
+/* ===== GALLERY ===== */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.gallery-item {
+    height: 270px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.12);
+    background: #18213d;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* ===== LETTER ===== */
+
+.letter {
+    max-width: 800px;
+    margin: auto;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 30px;
+    padding: 45px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 60px rgba(0,0,0,.2);
+}
+
+.letter p {
+    color: #e0e6f8;
+    font-size: 18px;
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+.letter .signature {
+    text-align: right;
+    color: #ffd0e3;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+/* ===== FINAL ===== */
+
+.final-box {
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.final-box h2 {
+    font-size: clamp(35px, 6vw, 60px);
+    margin-bottom: 20px;
+}
+
+.final-box p {
+    color: #d1d9f0;
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: auto;
+}
+
+.heart {
+    font-size: 65px;
+    margin: 25px 0;
+    animation: heart 1.5s infinite;
+}
+
+@keyframes heart {
+    0%,100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 30px 20px 50px;
+    color: #9ca9ce;
+}
+
+footer strong {
+    color: #ffd0e3;
+}
+
+/* ===== PETALS ===== */
+
+.petal {
+    position: fixed;
+    top: -20px;
+    z-index: 20;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform:
+            translateY(110vh)
+            rotate(500deg);
+        opacity: 0;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 800px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-item {
+        height: 220px;
+    }
+
+    .letter {
+        padding: 30px 22px;
+    }
+
+    .hero-subtitle {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    section {
+        padding: 65px 15px;
+    }
+
+    .teacher-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+        height: 260px;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ЗВЁЗДЫ -->
+<div class="stars" id="stars"></div>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            🌷 Мугалимдер күнүнө арналат
+        </div>
+
+        <h1>
+            Нурбийке Уланбек кызы
+        </h1>
+
+        <div class="teacher-photo">
+
+            <!--
+            МУГАЛИМДИН СҮРӨТҮН БУЛ ЖЕРГЕ КОЙ.
+            
+            Мисалы:
+            teacher.jpg
+            
+            Анан төмөнкү сапты:
+            src="teacher.jpg"
+            деп өзгөрт.
+            -->
+
+            <img
+                src="teahcer.jpg"
+                alt="Нурбийке Уланбек Кызы"
+            >
+
+        </div>
+
+        <p class="hero-subtitle">
+            Урматтуу мугалим,
+            сизге арналган кичинекей сюрпризибиз бар. ❤️
+        </p>
+
+        <button class="surprise-btn" onclick="openSurprise()">
+            🎁 Сюрпризди ачуу
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTENT ================= -->
+
+<div id="surpriseContent" class="hidden-content">
+
+
+<!-- ===== SECTION 1 ===== -->
+
+<section>
+
+    <h2 class="section-title">
+        Сиз биз үчүн кимсиз?
+    </h2>
+
+    <p class="section-description">
+        Мугалим — жөн гана сабак берген адам эмес.
+        Ал окуучунун келечегине жол көрсөткөн адам.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">📚</div>
+
+            <h3>Билим берүүчү</h3>
+
+            <p>
+                Сиз бизге билим гана эмес,
+                жашоодо керектүү көп нерселерди үйрөтөсүз.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <div class="card-icon">💡</div>
+
+            <h3>Кеңеш берүүчү</h3>
+
+            <p>
+                Кыйын учурда туура жол көрсөтүп,
+                жакшы чечим табууга жардам бересиз.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <div class="card-icon">❤️</div>
+
+            <h3>Колдоочу</h3>
+
+            <p>
+                Биздин ийгилигибизге сүйүнүп,
+                ката кетиргенде кайра аракет кылууга үйрөтөсүз.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===== GALLERY ===== -->
+
+<section>
+
+    <h2 class="section-title">
+        📸 Биздин эскерүүлөр
+    </h2>
+
+    <p class="section-description">
+        Бул сүрөттөр биздин мектептеги
+        сонун көз ирмемдерибизди эске салат.
+    </p>
+
+    <div class="gallery">
+
+        <!-- 1-СҮРӨТ -->
+        <div class="gallery-item">
+            <img src="photo1.jpg" alt="Класстын сүрөтү">
+        </div>
+
+        <!-- 2-СҮРӨТ -->
+        <div class="gallery-item">
+            <img src="photo2.jpg" alt="Класстын сүрөтү">
+        </div>
+
+        <!-- 3-СҮРӨТ -->
+        <div class="gallery-item">
+            <img src="photo3.jpg" alt="Класстын сүрөтү">
+        </div>
+
+        <!-- 4-СҮРӨТ -->
+        <div class="gallery-item">
+            <img src="photo4.jpg" alt="Класстын сүрөтү">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===== LETTER ===== -->
+
+<section>
+
+    <h2 class="section-title">
+        💌 Сизге айта турган сөзүбүз бар...
+    </h2>
+
+    <div class="letter">
+
+        <p>
+            <strong>Урматтуу Нурбийке Уланбек кызы!</strong>
+        </p>
+
+        <p>
+            Сизди Мугалимдер күнү менен
+            чын жүрөктөн куттуктайбыз!
+        </p>
+
+        <p>
+            Бизге билим берип, ар дайым туура жол
+            көрсөтүп, сабырдуулук менен түшүндүрүп
+            келгениңиз үчүн сизге чоң рахмат айтабыз.
+        </p>
+
+        <p>
+            Сиздин ар бир сабагыңыз, ар бир кеңешиңиз
+            жана бизге болгон ишенимиңиз биз үчүн
+            абдан баалуу.
+        </p>
+
+        <p>
+            Сизге чың ден соолук, үй-бүлөлүк бакыт,
+            иштериңизде ийгилик жана ар дайым
+            жылмайып жүрүшүңүздү каалайбыз!
+        </p>
+
+        <p>
+            Сиз окуткан окуучулар ар дайым сизди
+            жакшы сөздөр менен эстеп жүрүшсүн. 🌷
+        </p>
+
+        <p class="signature">
+            Урматтоо менен,<br>
+            21-кабинеттин окуучулары ❤️
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ===== FINAL ===== -->
+
+<section>
+
+    <div class="final-box">
+
+        <div class="heart">
+            ❤️
+        </div>
+
+        <h2>
+            Майрамыңыз менен!
+        </h2>
+
+        <p>
+            Сизге арналган бул кичинекей белек —
+            биздин сизге болгон урмат-сыйыбыздын
+            бир гана бөлүгү.
+        </p>
+
+        <p style="margin-top:20px;">
+            Ар дайым ден соолукта, бактылуу жана
+            ийгиликтүү болуңуз!
+        </p>
+
+        <p style="margin-top:30px; color:#ffd0e3;">
+            🌸 Нурбийке Уланбек кызы 🌸
+        </p>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<footer>
+
+    <strong>21-кабинет</strong>
+
+    <br>
+
+    Сиздин окуучуларыңыздан ❤️
+
+</footer>
+
+
+<script>
+
+/* ===============================
+   ЗВЁЗДЫ
+================================ */
+
+const starsContainer = document.getElementById("stars");
+
+for (let i = 0; i < 100; i++) {
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    star.style.animationDuration =
+        (2 + Math.random() * 3) + "s";
+
+    starsContainer.appendChild(star);
+}
+
+
+/* ===============================
+   ОТКРЫТИЕ СЮРПРИЗА
+================================ */
+
+function openSurprise() {
+
+    const content =
+        document.getElementById("surpriseContent");
+
+    content.style.display = "block";
+
+    content.classList.add("reveal");
+
+    setTimeout(() => {
+
+        content.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }, 100);
+
+    createPetals();
+
+}
+
+
+/* ===============================
+   ЛЕПЕСТКИ
+================================ */
+
+function createPetals() {
+
+    for (let i = 0; i < 35; i++) {
+
+        const petal =
+            document.createElement("div");
+
+        petal.className = "petal";
+
+        petal.innerHTML =
+            Math.random() > 0.5 ? "🌸" : "🌷";
+
+        petal.style.left =
+            Math.random() * 100 + "vw";
+
+        petal.style.fontSize =
+            (12 + Math.random() * 18) + "px";
+
+        petal.style.animationDuration =
+            (4 + Math.random() * 5) + "s";
+
+        petal.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        document.body.appendChild(petal);
+
+        setTimeout(() => {
+            petal.remove();
+        }, 10000);
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
